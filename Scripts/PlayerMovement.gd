@@ -18,16 +18,55 @@ var HideMouse = true;
 #Weapon configuration
 var Weapon_Type = "NailGun";
 var Weapon_Damage = 0;
-var Weapon_MiningRate = 0;
 var TotalAmmo = 10;
 var LoadedAmmo = 15;
 var MaxAmmoInMag = 15;
+
+#Mining Configuration
+var Weapon_MiningRate = 0;
+var Recources_Steel=0;
+var Recources_Silicone=0;
+var Recources_Rubber=0;
+var Recources_Gold=0;
+var Recources_Copper=0;
 
 func ResetAmmoText():
 	if TotalAmmo > 999:
 		AmmoLabel.text = str(LoadedAmmo) + "/999+";
 	else:
 		AmmoLabel.text = str(LoadedAmmo) + "/" + str(TotalAmmo);
+		
+func WeaponFramework():
+	if Input.is_action_pressed("left_click") and $WeaponCooldown.is_stopped():
+		var RayTarget = ray_cast.get_collider();
+		
+		if Weapon_Type == "NailGun" and LoadedAmmo != 0:
+			$WeaponCooldown.wait_time = 0.3
+			ray_cast.set_target_position(Vector3(0,0,100));
+			$PlayerSoundNailGun.play();
+			LoadedAmmo -= 1;
+			Weapon_Damage=5
+		elif Weapon_Type == "Drill": 
+			$WeaponCooldown.wait_time = 0.01
+			ray_cast.set_target_position(Vector3(0,0,10));
+			AmmoLabel.text = "";
+			Weapon_Damage=2
+		elif Weapon_Type == "Magnet":
+			$WeaponCooldown.wait_time = 0.01;
+			ray_cast.set_target_position(Vector3(0,0,30));
+			AmmoLabel.text = "";
+			Weapon_Damage=0
+		
+		if RayTarget != null:
+			var RayTarget_Name = str(RayTarget.name);
+			
+			if "Enemy_" in RayTarget_Name:
+				RayTarget.EnemyHealth -= Weapon_Damage;
+			elif "RecourceContainer_" in RayTarget_Name:
+				RayTarget.MineRecource(Weapon_MiningRate);
+		
+		$WeaponCooldown.start()
+		ResetAmmoText()
 
 
 func _ready():
@@ -56,26 +95,7 @@ func _input(event):
 func _physics_process(delta):
 	
 	#this has to be in physics process, ask me if you want to know why. DONT MOVE IT
-	
-	if Input.is_action_pressed("left_click") and $WeaponCooldown.is_stopped():
-		var RayTarget = ray_cast.get_collider();
-		
-		if Weapon_Type == "NailGun" and LoadedAmmo != 0:
-			$WeaponCooldown.wait_time = 0.3
-			ray_cast.set_target_position(Vector3(0,0,100));
-			$PlayerSoundNailGun.play();
-			LoadedAmmo -= 1;
-		elif Weapon_Type == "Drill": 
-			$WeaponCooldown.wait_time = 0.01
-			ray_cast.set_target_position(Vector3(0,0,10));
-			AmmoLabel.text = "";
-		elif Weapon_Type == "Magnet":
-			$WeaponCooldown.wait_time = 0.01;
-			ray_cast.set_target_position(Vector3(0,0,30));
-			AmmoLabel.text = "";
-		
-		$WeaponCooldown.start()
-		ResetAmmoText()
+	WeaponFramework();
 	
 	
 	# Add the gravity.
