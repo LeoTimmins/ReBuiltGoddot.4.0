@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/PlayerCamera.gd" id="1_1oqof"]
 [ext_resource type="Script" path="res://Scripts/PlayerHead.gd" id="2_c3w7u"]
 [ext_resource type="Script" path="res://Scripts/PlayerMovement.gd" id="3_ujf5q"]
-[ext_resource type="AudioStream" uid="uid://d22bgn7fldndh" path="res://Assets/Audio/Jump1.mp3" id="4_vqkes"]
+[ext_resource type="AudioStream" uid="uid://kmtwrbvlqpc0" path="res://Assets/Audio/Jump1.wav" id="4_8n7h3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_20285"]
 resource_name = "Tyre_Rubber"
@@ -768,6 +768,7 @@ shadow_mesh = SubResource( "ArrayMesh_wpv7h" )
 [sub_resource type="BoxShape3D" id="BoxShape3D_xy3fd"]
 
 [node name="CharacterBody3D" type="CharacterBody3D"]
+collision_layer = 2
 script = ExtResource( "3_ujf5q" )
 
 [node name="CameraPivot" type="Node3D" parent="."]
@@ -776,6 +777,11 @@ script = ExtResource( "3_ujf5q" )
 transform = Transform3D(-1, -2.99004e-08, 8.21505e-08, 0, 0.939693, 0.34202, -8.74228e-08, 0.34202, -0.939693, 3, 10, -8)
 current = true
 script = ExtResource( "1_1oqof" )
+
+[node name="RayCast3D" type="RayCast3D" parent="CameraPivot/PlayerCamera"]
+target_position = Vector3(0, 0, -100)
+debug_shape_custom_color = Color(1, 0, 1, 1)
+debug_shape_thickness = 5
 
 [node name="PlayerMesh" type="Node3D" parent="."]
 
@@ -948,7 +954,7 @@ transform = Transform3D(4.74342, 0, 0, 0, 8.83778, 0, 0, 0, 3.71066, 0, 3.27387,
 shape = SubResource( "BoxShape3D_xy3fd" )
 
 [node name="PlayerSound" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource( "4_vqkes" )
+stream = ExtResource( "4_8n7h3" )
 
 [node name="JumpCooldown" type="Timer" parent="."]
 one_shot = true

@@ -7,13 +7,27 @@ const JUMP_VELOCITY = 4.5
 @onready var camera_pivot = get_node("CameraPivot");
 @onready var mesh = get_node("PlayerMesh");
 @onready var collision = get_node("CollisionBox");
+@onready var ray_cast = get_node("CameraPivot/PlayerCamera/RayCast3D");
 
 # Get the gravity from the project settings to be synced with RigidDynamicBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+var HideMouse = true;
+
 func _ready():
-	#Hide Mouse
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED);
+	
+func _input(event):
+	if Input.is_action_just_pressed("left_click"):
+			print(ray_cast.get_collider())
+			
+	if event is InputEventKey:
+		if Input.is_action_just_pressed("esc"):
+			HideMouse = !HideMouse;
+			if HideMouse:
+				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED);
+			else:
+				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE);
 
 func _physics_process(delta):
 	# Add the gravity.
