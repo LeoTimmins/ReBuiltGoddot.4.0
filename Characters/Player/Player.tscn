@@ -1,10 +1,10 @@
-[gd_scene load_steps=59 format=3 uid="uid://6drdu1vf6rw5"]
+[gd_scene load_steps=59 format=3 uid="uid://bop50py74cic7"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerCamera.gd" id="1_1oqof"]
 [ext_resource type="Script" path="res://Scripts/PlayerHead.gd" id="2_c3w7u"]
-[ext_resource type="Script" path="res://Scripts/PlayerWheel.gd" id="3_nnax5"]
+[ext_resource type="Script" path="res://Scripts/PlayerWheel.gd" id="3_3lhx6"]
 [ext_resource type="Script" path="res://Scripts/PlayerMovement.gd" id="3_ujf5q"]
-[ext_resource type="AudioStream" uid="uid://kmtwrbvlqpc0" path="res://Assets/Audio/Jump1.wav" id="4_8n7h3"]
+[ext_resource type="AudioStream" uid="uid://kmtwrbvlqpc0" path="res://Assets/Audio/Jump1.wav" id="5_emxbc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_20285"]
 resource_name = "Tyre_Rubber"
@@ -788,7 +788,7 @@ debug_shape_thickness = 5
 
 [node name="Wheel" type="Node3D" parent="PlayerMesh"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.829653)
-script = ExtResource( "3_nnax5" )
+script = ExtResource( "3_3lhx6" )
 
 [node name="WheelTire" type="MeshInstance3D" parent="PlayerMesh/Wheel"]
 transform = Transform3D(-5.96046e-08, -1, 0, -1, 5.96046e-08, 0, 0, 0, 1, 0, 0, 0)
@@ -956,7 +956,7 @@ transform = Transform3D(4.74342, 0, 0, 0, 8.83778, 0, 0, 0, 3.71066, 0, 3.27387,
 shape = SubResource( "BoxShape3D_xy3fd" )
 
 [node name="PlayerSound" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource( "4_8n7h3" )
+stream = ExtResource( "5_emxbc" )
 
 [node name="JumpCooldown" type="Timer" parent="."]
 one_shot = true
