@@ -1,7 +1,8 @@
-[gd_scene load_steps=58 format=3 uid="uid://6drdu1vf6rw5"]
+[gd_scene load_steps=59 format=3 uid="uid://6drdu1vf6rw5"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerCamera.gd" id="1_1oqof"]
 [ext_resource type="Script" path="res://Scripts/PlayerHead.gd" id="2_c3w7u"]
+[ext_resource type="Script" path="res://Scripts/PlayerWheel.gd" id="3_nnax5"]
 [ext_resource type="Script" path="res://Scripts/PlayerMovement.gd" id="3_ujf5q"]
 [ext_resource type="AudioStream" uid="uid://d22bgn7fldndh" path="res://Assets/Audio/Jump1.mp3" id="4_vqkes"]
 
@@ -781,6 +782,7 @@ script = ExtResource( "1_1oqof" )
 
 [node name="Wheel" type="Node3D" parent="PlayerMesh"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.829653)
+script = ExtResource( "3_nnax5" )
 
 [node name="WheelTire" type="MeshInstance3D" parent="PlayerMesh/Wheel"]
 transform = Transform3D(-5.96046e-08, -1, 0, -1, 5.96046e-08, 0, 0, 0, 1, 0, 0, 0)

@@ -1,0 +1,25 @@
+102b54792f6b2ef812636a2bdaeb9d34
+::res://::1647148902
+icon.png::CompressedTexture2D::6026347365182908252::1647148862::1647148902::1::::<><>::
+::res://Areas/::1647148862
+TestingArea.tscn::PackedScene::942648143850039805::1647148862::0::1::::<><>::uid://6drdu1vf6rw5<>uid://mw60s6p2corm<>uid://bodiar8teybyg
+::res://Assets/::1647148862
+::res://Assets/Audio/::1647148862
+Jump1.mp3::AudioStreamMP3::9110171192901290377::1647148862::1647148902::1::::<><>::
+::res://Characters/::1647148862
+::res://Characters/Player/::1647148862
+Player.tscn::PackedScene::2183085923893909942::1647148862::0::1::::<><>::res://Scripts/PlayerCamera.gd<>res://Scripts/PlayerHead.gd<>res://Scripts/PlayerMovement.gd<>uid://d22bgn7fldndh
+::res://Misc Scenes/::1647148862
+::res://Misc Scenes/LD/::1647148862
+PipesCorner.tscn::PackedScene::3375744308574927322::1647148862::0::1::::<><>::
+PipesStraight.tscn::PackedScene::889610299896033766::1647148862::0::1::::<><>::
+::res://Models/::1647148862
+::res://Models/LD/::1647148862
+::res://Models/Misc/::1647148862
+::res://Models/Player/::1647148862
+MainCharModel.glb::PackedScene::600980472092478808::1647148862::1647148903::1::::<><>::
+::res://Scripts/::1647148862
+Player.gd::GDScript::-1::1647148862::0::1::::<>Node3D<>::
+PlayerCamera.gd::GDScript::-1::1647148862::0::1::::<>Camera3D<>::
+PlayerHead.gd::GDScript::-1::1647148862::0::1::::<>Node3D<>::
+PlayerMovement.gd::GDScript::-1::1647148862::0::1::::<>CharacterBody3D<>::
