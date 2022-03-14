@@ -84,6 +84,7 @@ func WeaponFramework():
 
 func _ready():
 	Menu.visible = false
+	HUD.visible = true;
 	Input.set_custom_mouse_cursor(load("res://Assets/Images/BlackSqr.png"))
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED);
 	ResetAmmoText()

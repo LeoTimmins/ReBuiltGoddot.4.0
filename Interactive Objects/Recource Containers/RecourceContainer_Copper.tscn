@@ -4,7 +4,7 @@
 
 [sub_resource type="SphereMesh" id="SphereMesh_8t1vg"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8sf73"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lhueh"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_kdfnx"]
 
@@ -13,7 +13,7 @@ script = ExtResource( "1_nph1o" )
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource( "SphereMesh_8t1vg" )
-surface_material_override/0 = SubResource( "ShaderMaterial_8sf73" )
+surface_material_override/0 = SubResource( "StandardMaterial3D_lhueh" )
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource( "SphereShape3D_kdfnx" )
