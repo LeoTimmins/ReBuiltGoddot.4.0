@@ -16,4 +16,7 @@ func MineRecource(Weapon_MiningRate):
 	else:
 		RecourceContainer_TotalRecources -= Weapon_MiningRate;
 		Player.Recources_Steel += Weapon_MiningRate; #Change Player.___ according to recource type
-	print(Player.Recources_Steel)
+	
+	Player.RecourcesLabel.text = "Steel           - "+ str(Player.Recources_Steel) +"\nSilicone     - "+ str(Player.Recources_Silicone) +"\nRubber       - "+ str(Player.Recources_Rubber) +"\nGold            - "+ str(Player.Recources_Gold) +"\nCopper       - "+ str(Player.Recources_Copper);
+	
+	

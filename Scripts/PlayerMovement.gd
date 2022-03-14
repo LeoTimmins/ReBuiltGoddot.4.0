@@ -9,6 +9,7 @@ const JUMP_VELOCITY = 4.5
 @onready var collision = get_node("CollisionBox");
 @onready var ray_cast = get_node("CameraPivot/PlayerCamera/RayCast3D");
 @onready var AmmoLabel = get_node("HUD/AmmoCounter/AmmoLabel");
+@onready var RecourcesLabel = get_node("HUD/RecourcesTxt/RecourcesLabel");
 
 # Get the gravity from the project settings to be synced with RigidDynamicBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -99,7 +100,11 @@ func _input(event):
 func _physics_process(delta):
 	
 	#this has to be in physics process, ask me if you want to know why. DONT MOVE IT
-	WeaponFramework();
+	if Weapon_Type == "NailGun":
+		if LoadedAmmo != 0:
+			WeaponFramework();
+	else:
+		WeaponFramework();
 	
 	
 	# Add the gravity.

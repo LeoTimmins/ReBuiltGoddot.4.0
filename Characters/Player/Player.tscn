@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://bop50py74cic7"]
+[gd_scene load_steps=64 format=3 uid="uid://bop50py74cic7"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerCamera.gd" id="1_1oqof"]
 [ext_resource type="Script" path="res://Scripts/PlayerHead.gd" id="2_c3w7u"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/PlayerMovement.gd" id="3_ujf5q"]
 [ext_resource type="AudioStream" uid="uid://kmtwrbvlqpc0" path="res://Assets/Audio/Jump1.wav" id="5_emxbc"]
 [ext_resource type="AudioStream" uid="uid://2q8ry46aprxk" path="res://Assets/Audio/NailGun.wav" id="6_jut43"]
+[ext_resource type="FontData" uid="uid://bhstvjvgrohsp" path="res://Assets/Fonts/Roboto_Slab/RobotoSlab-VariableFont_wght.ttf" id="7_oksmc"]
 [ext_resource type="Texture2D" uid="uid://cr4hccdtav5me" path="res://icon.png" id="7_ulvjd"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_20285"]
@@ -770,6 +771,18 @@ shadow_mesh = SubResource( "ArrayMesh_wpv7h" )
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xy3fd"]
 
+[sub_resource type="Font" id="Font_cta1n"]
+variation_coordinates = {
+"weight": 400
+}
+data/0 = ExtResource( "7_oksmc" )
+
+[sub_resource type="Font" id="Font_6iyat"]
+variation_coordinates = {
+"weight": 400
+}
+data/0 = ExtResource( "7_oksmc" )
+
 [node name="CharacterBody3D" type="CharacterBody3D"]
 collision_layer = 2
 script = ExtResource( "3_ujf5q" )
@@ -995,6 +1008,7 @@ offset_right = 194.0
 offset_bottom = 45.5
 grow_horizontal = 0
 grow_vertical = 0
+theme_override_fonts/normal_font = SubResource( "Font_cta1n" )
 theme_override_font_sizes/normal_font_size = 45
 text = "15/567"
 __meta__ = {
@@ -1014,5 +1028,34 @@ offset_bottom = 20.0
 
 [node name="Sprite2D" type="Sprite2D" parent="HUD/Control"]
 position = Vector2(20, 20)
-scale = Vector2(0.75, 0.625)
+scale = Vector2(0.375, 0.375)
 texture = ExtResource( "7_ulvjd" )
+
+[node name="RecourcesTxt" type="Control" parent="HUD"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -208.0
+offset_right = 272.0
+grow_vertical = 0
+__meta__ = {
+"_edit_layout_mode": 1,
+"_edit_use_custom_anchors": false
+}
+
+[node name="RecourcesLabel" type="RichTextLabel" parent="HUD/RecourcesTxt"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = SubResource( "Font_6iyat" )
+theme_override_font_sizes/normal_font_size = 29
+text = "Steel           - 0
+Silicone     - 0
+Rubber       - 0
+Gold            - 0
+Copper       - 0"
+__meta__ = {
+"_edit_layout_mode": 1,
+"_edit_use_custom_anchors": false
+}
