@@ -38,24 +38,29 @@ func ResetAmmoText():
 		
 func WeaponFramework():
 	if Input.is_action_pressed("left_click") and $WeaponCooldown.is_stopped():
-		var RayTarget = ray_cast.get_collider();
 		
 		if Weapon_Type == "NailGun" and LoadedAmmo != 0:
 			$WeaponCooldown.wait_time = 0.3
-			ray_cast.set_target_position(Vector3(0,0,100));
+			ray_cast.set_target_position(Vector3(0,0,-100));
 			$PlayerSoundNailGun.play();
 			LoadedAmmo -= 1;
 			Weapon_Damage=5
+			Weapon_MiningRate = 30; 
+			ResetAmmoText()
 		elif Weapon_Type == "Drill": 
 			$WeaponCooldown.wait_time = 0.01
-			ray_cast.set_target_position(Vector3(0,0,10));
+			ray_cast.set_target_position(Vector3(0,0,-10));
 			AmmoLabel.text = "";
 			Weapon_Damage=2
+			Weapon_MiningRate = 0.9;
 		elif Weapon_Type == "Magnet":
 			$WeaponCooldown.wait_time = 0.01;
-			ray_cast.set_target_position(Vector3(0,0,30));
+			ray_cast.set_target_position(Vector3(0,0,-30));
 			AmmoLabel.text = "";
 			Weapon_Damage=0
+			Weapon_MiningRate = 0;
+			
+		var RayTarget = ray_cast.get_collider();
 		
 		if RayTarget != null:
 			var RayTarget_Name = str(RayTarget.name);
@@ -66,7 +71,6 @@ func WeaponFramework():
 				RayTarget.MineRecource(Weapon_MiningRate);
 		
 		$WeaponCooldown.start()
-		ResetAmmoText()
 
 
 func _ready():

@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://novjoplfcux6"]
+[gd_scene load_steps=12 format=3 uid="uid://novjoplfcux6"]
 
 [ext_resource type="PackedScene" uid="uid://bop50py74cic7" path="res://Characters/Player/Player.tscn" id="1_dr6u4"]
 [ext_resource type="PackedScene" uid="uid://mw60s6p2corm" path="res://Misc Scenes/LD/PipesStraight.tscn" id="2_tv7y2"]
 [ext_resource type="PackedScene" uid="uid://bodiar8teybyg" path="res://Misc Scenes/LD/PipesCorner.tscn" id="3_1pj6s"]
+[ext_resource type="PackedScene" uid="uid://bdae2rowvtyxj" path="res://Interactive Objects/Recource Containers/RecourceContainer_Steel.tscn" id="4_gi0y6"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_61q0t"]
 
@@ -60,3 +61,21 @@ transform = Transform3D(0, 0, 1, -8.74228e-08, -1, 0, 1, -8.74228e-08, 0, 4.2678
 
 [node name="PipesCorner2" parent="." instance=ExtResource( "3_1pj6s" )]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.91281, 0.727315, -4.11688)
+
+[node name="RecourceContainers" type="Node3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.564656, 0)
+
+[node name="RecourceContainer_Steel" parent="RecourceContainers" instance=ExtResource( "4_gi0y6" )]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -46.2585, 26.2292, 45.9434)
+
+[node name="RecourceContainer_Steel2" parent="RecourceContainers" instance=ExtResource( "4_gi0y6" )]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 38.796, -5.64656, 81.0781)
+
+[node name="RecourceContainer_Steel3" parent="RecourceContainers" instance=ExtResource( "4_gi0y6" )]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 9.9948, -5.64656, 78.8472)
+
+[node name="RecourceContainer_Steel4" parent="RecourceContainers" instance=ExtResource( "4_gi0y6" )]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -19.966, -5.64656, 60.5596)
+
+[node name="RecourceContainer_Steel5" parent="RecourceContainers" instance=ExtResource( "4_gi0y6" )]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -52.7608, -5.64656, 12.4307)
