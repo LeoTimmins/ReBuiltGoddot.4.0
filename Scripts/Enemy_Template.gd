@@ -4,6 +4,7 @@ const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+@onready var OverHead = get_node("OverHead");
 @onready var HealthBar = get_node("OverHead/HealthBar");
 
 const MaxHealth = 100;
@@ -11,6 +12,7 @@ var Health = 100.00;
 
 
 func _physics_process(delta):
+		
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 
