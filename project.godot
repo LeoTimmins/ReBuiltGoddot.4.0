@@ -18,7 +18,6 @@ config/features=PackedStringArray("4.0", "Vulkan Clustered")
 [display]
 
 window/size/resizable=false
-window/size/borderless=true
 
 [input]
 
