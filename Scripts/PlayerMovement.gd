@@ -130,6 +130,7 @@ func _physics_process(delta):
 		velocity.y = JUMP_VELOCITY
 		$PlayerSoundJump.play();
 		$JumpCooldown.start();
+		$AnimationPlayer.play("Jump");
 	
 	var input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
 		
