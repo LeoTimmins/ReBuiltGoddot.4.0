@@ -14,8 +14,9 @@ func normalize_angle(angle: float):
 
 var wobble_right = true;
 
-func _process(delta):
-	# rotate wheel
+
+
+func Wheel1(delta):
 	if Input.is_action_pressed("move_forward") || Input.is_action_pressed("move_back"):
 		rotation.x = normalize_angle(rotation.x + spin_speed * delta);
 		if wobble_right:

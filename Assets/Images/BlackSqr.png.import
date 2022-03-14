@@ -2,9 +2,9 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cr4hccdtav5me"
-path.s3tc="res://.godot/imported/icon.png-487276ed1e3a0c39cad0279d744ee560.s3tc.ctex"
-path.etc2="res://.godot/imported/icon.png-487276ed1e3a0c39cad0279d744ee560.etc2.ctex"
+uid="uid://dhchoy2sr8x2a"
+path.s3tc="res://.godot/imported/BlackSqr.png-9c795661e67aa9ee606ba5cccc7921ae.s3tc.ctex"
+path.etc2="res://.godot/imported/BlackSqr.png-9c795661e67aa9ee606ba5cccc7921ae.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc", "etc2"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://icon.png"
-dest_files=["res://.godot/imported/icon.png-487276ed1e3a0c39cad0279d744ee560.s3tc.ctex", "res://.godot/imported/icon.png-487276ed1e3a0c39cad0279d744ee560.etc2.ctex"]
+source_file="res://Assets/Images/BlackSqr.png"
+dest_files=["res://.godot/imported/BlackSqr.png-9c795661e67aa9ee606ba5cccc7921ae.s3tc.ctex", "res://.godot/imported/BlackSqr.png-9c795661e67aa9ee606ba5cccc7921ae.etc2.ctex"]
 
 [params]
 

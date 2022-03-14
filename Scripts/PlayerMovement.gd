@@ -10,16 +10,20 @@ const JUMP_VELOCITY = 4.5
 @onready var ray_cast = get_node("CameraPivot/PlayerCamera/RayCast3D");
 @onready var AmmoLabel = get_node("HUD/AmmoCounter/AmmoLabel");
 @onready var RecourcesLabel = get_node("HUD/RecourcesTxt/RecourcesLabel");
+@onready var  wheel = get_node("PlayerMesh/Wheel");
+@onready var  HUD = get_node("HUD");
+@onready var  Menu = get_node("Menu");
+@onready var  ExitGameButton = get_node("Menu/Exit/Button");
 
 # Get the gravity from the project settings to be synced with RigidDynamicBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
-var HideMouse = true;
+var GamePaused = false;
 
 #Weapon configuration
 var Weapon_Type = "NailGun";
 var Weapon_Damage = 0;
-var TotalAmmo = 10;
+var TotalAmmo = 1000;
 var LoadedAmmo = 15;
 var MaxAmmoInMag = 15;
 
@@ -45,12 +49,12 @@ func WeaponFramework():
 			ray_cast.set_target_position(Vector3(0,0,-100));
 			$PlayerSoundNailGun.play();
 			LoadedAmmo -= 1;
-			Weapon_Damage=5
+			Weapon_Damage=40;
 			Weapon_MiningRate = 30; 
-			ResetAmmoText()
+			ResetAmmoText();
 		elif Weapon_Type == "Drill": 
 			$WeaponCooldown.wait_time = 0.01
-			ray_cast.set_target_position(Vector3(0,0,-10));
+			ray_cast.set_target_position(Vector3(0,0,-20));
 			AmmoLabel.text = "";
 			Weapon_Damage=2
 			Weapon_MiningRate = 0.9;
@@ -67,7 +71,11 @@ func WeaponFramework():
 			var RayTarget_Name = str(RayTarget.name);
 			
 			if "Enemy_" in RayTarget_Name:
-				RayTarget.EnemyHealth -= Weapon_Damage;
+				RayTarget.Health -= Weapon_Damage;
+				RayTarget.HealthBar.scale = Vector3(8*(RayTarget.Health/RayTarget.MaxHealth),1,1)
+				
+				if RayTarget.Health < 0:
+					RayTarget.queue_free()
 			elif "RecourceContainer_" in RayTarget_Name:
 				RayTarget.MineRecource(Weapon_MiningRate);
 		
@@ -75,19 +83,30 @@ func WeaponFramework():
 
 
 func _ready():
+	Menu.visible = false
+	Input.set_custom_mouse_cursor(load("res://Assets/Images/BlackSqr.png"))
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED);
 	ResetAmmoText()
-	
+
 func _input(event):
+	
+	if event is InputEventMouseMotion && !GamePaused:
+		camera.setpos(event)
+		
 	if event is InputEventKey:
 		if Input.is_action_just_pressed("esc"):
-			HideMouse = !HideMouse;
-			if HideMouse:
+			
+			GamePaused = !GamePaused;
+			if !GamePaused:
+				Menu.visible = false
+				HUD.visible = true
 				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED);
 			else:
+				Menu.visible = true
+				HUD.visible = false
 				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE);
 				
-		if Input.is_action_just_pressed("Reload") and LoadedAmmo != MaxAmmoInMag and TotalAmmo != 0 and Weapon_Type == "NailGun":
+		if !GamePaused && Input.is_action_just_pressed("Reload") and LoadedAmmo != MaxAmmoInMag and TotalAmmo != 0 and Weapon_Type == "NailGun":
 			#checks if there isn't enough ammo to fill magazine
 			if MaxAmmoInMag - LoadedAmmo > TotalAmmo:
 				LoadedAmmo += TotalAmmo;
@@ -98,26 +117,21 @@ func _input(event):
 			ResetAmmoText();
 
 func _physics_process(delta):
-	
-	#this has to be in physics process, ask me if you want to know why. DONT MOVE IT
-	if Weapon_Type == "NailGun":
-		if LoadedAmmo != 0:
-			WeaponFramework();
-	else:
-		WeaponFramework();
-	
+	if ExitGameButton.button_pressed:
+		get_tree().quit()
 	
 	# Add the gravity.
-	if not is_on_floor():
+	if !GamePaused and not is_on_floor():
 		velocity.y -= gravity * delta
 
 	# Handle Jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor() and $JumpCooldown.is_stopped():
+	if !GamePaused && Input.is_action_just_pressed("jump") and is_on_floor() and $JumpCooldown.is_stopped():
 		velocity.y = JUMP_VELOCITY
 		$PlayerSoundJump.play();
 		$JumpCooldown.start();
-
+	
 	var input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
+		
 	var direction = -(camera_pivot.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
 		var rotation_tween = get_tree().create_tween()
@@ -127,5 +141,12 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
-
-	move_and_slide()
+	if !GamePaused:
+		#this has to be in physics process, ask me if you want to know why. DONT MOVE IT
+		if Weapon_Type == "NailGun":
+			if LoadedAmmo != 0:
+				WeaponFramework();
+		else:
+			WeaponFramework();
+		wheel.Wheel1(delta)
+		move_and_slide()
