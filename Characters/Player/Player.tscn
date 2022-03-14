@@ -1,13 +1,13 @@
 [gd_scene load_steps=66 format=3 uid="uid://bop50py74cic7"]
 
-[ext_resource type="Script" path="res://Scripts/PlayerCamera.gd" id="1_1oqof"]
-[ext_resource type="Script" path="res://Scripts/PlayerHead.gd" id="2_c3w7u"]
-[ext_resource type="Script" path="res://Scripts/PlayerWheel.gd" id="3_3lhx6"]
+[ext_resource type="Script" path="res://Scripts/Player/PlayerCamera.gd" id="2_vdph0"]
+[ext_resource type="Script" path="res://Scripts/Player/PlayerWheel.gd" id="3_nte7b"]
 [ext_resource type="Script" path="res://Scripts/PlayerMovement.gd" id="3_ujf5q"]
+[ext_resource type="Script" path="res://Scripts/Player/PlayerHead.gd" id="4_fo8u1"]
 [ext_resource type="AudioStream" uid="uid://kmtwrbvlqpc0" path="res://Assets/Audio/Jump1.wav" id="5_emxbc"]
 [ext_resource type="AudioStream" uid="uid://2q8ry46aprxk" path="res://Assets/Audio/NailGun.wav" id="6_jut43"]
 [ext_resource type="FontData" uid="uid://bhstvjvgrohsp" path="res://Assets/Fonts/Roboto_Slab/RobotoSlab-VariableFont_wght.ttf" id="7_oksmc"]
-[ext_resource type="Texture2D" uid="uid://cr4hccdtav5me" path="res://icon.png" id="7_ulvjd"]
+[ext_resource type="Texture2D" uid="uid://dhchoy2sr8x2a" path="res://Assets/Images/BlackSqr.png" id="8_1oqm1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_20285"]
 resource_name = "Tyre_Rubber"
@@ -1064,7 +1064,7 @@ script = ExtResource( "3_ujf5q" )
 [node name="PlayerCamera" type="Camera3D" parent="CameraPivot"]
 transform = Transform3D(-1, -2.99004e-08, 8.21505e-08, 0, 0.939693, 0.34202, -8.74228e-08, 0.34202, -0.939693, 3, 10, -8)
 current = true
-script = ExtResource( "1_1oqof" )
+script = ExtResource( "2_vdph0" )
 
 [node name="RayCast3D" type="RayCast3D" parent="CameraPivot/PlayerCamera"]
 transform = Transform3D(1, -1.06581e-14, 2.13163e-14, 0, 1, 0, 0, 0, 1, 0, 0, 0)
@@ -1076,7 +1076,7 @@ debug_shape_thickness = 5
 
 [node name="Wheel" type="Node3D" parent="PlayerMesh"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.829653)
-script = ExtResource( "3_3lhx6" )
+script = ExtResource( "3_nte7b" )
 
 [node name="WheelTire" type="MeshInstance3D" parent="PlayerMesh/Wheel"]
 transform = Transform3D(-5.96046e-08, -1, 0, -1, 5.96046e-08, 0, 0, 0, 1, 0, 0, 0)
@@ -1182,7 +1182,7 @@ skeleton = NodePath("")
 
 [node name="Head" type="Node3D" parent="PlayerMesh/HeadAndNeck"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.21061, 0.618354)
-script = ExtResource( "2_c3w7u" )
+script = ExtResource( "4_fo8u1" )
 PlayerCamera_path = NodePath("../../../CameraPivot/PlayerCamera")
 
 [node name="Head" type="MeshInstance3D" parent="PlayerMesh/HeadAndNeck/Head"]
@@ -1256,7 +1256,6 @@ one_shot = true
 one_shot = true
 
 [node name="HUD" type="Control" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 
@@ -1290,7 +1289,7 @@ __meta__ = {
 "_edit_use_custom_anchors": false
 }
 
-[node name="Control" type="Control" parent="HUD"]
+[node name="CrossHair" type="Control" parent="HUD"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -1299,11 +1298,17 @@ offset_left = -20.0
 offset_top = -20.0
 offset_right = 20.0
 offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+__meta__ = {
+"_edit_layout_mode": 1,
+"_edit_use_custom_anchors": false
+}
 
-[node name="Sprite2D" type="Sprite2D" parent="HUD/Control"]
+[node name="Sprite2D" type="Sprite2D" parent="HUD/CrossHair"]
 position = Vector2(20, 20)
 scale = Vector2(0.375, 0.375)
-texture = ExtResource( "7_ulvjd" )
+texture = ExtResource( "8_1oqm1" )
 
 [node name="RecourcesTxt" type="Control" parent="HUD"]
 anchor_top = 1.0
@@ -1334,17 +1339,81 @@ __meta__ = {
 "_edit_use_custom_anchors": false
 }
 
+[node name="HealthBarSpatial" type="Control" parent="HUD"]
+offset_right = 40.0
+offset_bottom = 40.0
+rect_scale = Vector2(6.71445, 1.84427)
+__meta__ = {
+"_edit_layout_mode": 0,
+"_edit_use_custom_anchors": false
+}
+
+[node name="HealthBarBG" type="ColorRect" parent="HUD/HealthBarSpatial"]
+offset_right = 40.0
+offset_bottom = 25.0
+color = Color(0, 0, 0, 1)
+
+[node name="HealthBar" type="ColorRect" parent="HUD/HealthBarSpatial"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -17.4681
+offset_top = -15.12
+offset_right = 17.5319
+offset_bottom = -0.120007
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 1, 0, 1)
+__meta__ = {
+"_edit_layout_mode": 1,
+"_edit_use_custom_anchors": false
+}
+
+[node name="StaminaBarSpatial" type="Control" parent="HUD"]
+offset_top = 48.0
+offset_right = 152.0
+offset_bottom = 86.0
+__meta__ = {
+"_edit_layout_mode": 0,
+"_edit_use_custom_anchors": false
+}
+
+[node name="StaminaBarBG" type="ColorRect" parent="HUD/StaminaBarSpatial"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.156863, 0.156863, 0.156863, 1)
+__meta__ = {
+"_edit_layout_mode": 1,
+"_edit_use_custom_anchors": false
+}
+
+[node name="StaminaBar" type="ColorRect" parent="HUD/StaminaBarSpatial"]
+offset_left = 8.0
+offset_top = 6.0
+offset_right = 144.0
+offset_bottom = 30.0
+color = Color(0.137255, 0.403922, 1, 1)
+__meta__ = {
+"_edit_layout_mode": 0,
+"_edit_use_custom_anchors": false
+}
+
 [node name="Menu" type="Control" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="Exit" type="Control" parent="Menu"]
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -354.0
-offset_top = 176.0
-offset_right = 354.0
-offset_bottom = 448.0
+offset_left = -171.5
+offset_top = 75.0
+offset_right = 171.5
+offset_bottom = 204.0
 grow_horizontal = 2
 __meta__ = {
 "_edit_layout_mode": 1,
@@ -1354,11 +1423,9 @@ __meta__ = {
 [node name="Button" type="Button" parent="Menu/Exit"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -6.0
-offset_right = -6.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 173
+theme_override_font_sizes/font_size = 81
 text = "Exit"
 __meta__ = {
 "_edit_layout_mode": 1,

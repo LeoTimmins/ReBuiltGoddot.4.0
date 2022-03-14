@@ -1,11 +1,7 @@
 extends CharacterBody3D
 
-var NormalSpeed = 5.0
-var SPEED = NormalSpeed
-
+const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
-
-var RunStaminaCost = 10;
 
 @onready var camera = get_node("CameraPivot/PlayerCamera");
 @onready var camera_pivot = get_node("CameraPivot");
@@ -18,17 +14,11 @@ var RunStaminaCost = 10;
 @onready var  HUD = get_node("HUD");
 @onready var  Menu = get_node("Menu");
 @onready var  ExitGameButton = get_node("Menu/Exit/Button");
-@onready var HealthBar = get_node("HUD/HealthBarSpatial/HealthBar")
-@onready var StaminaBar = get_node("HUD/StaminaBarSpatial/StaminaBar")
 
 # Get the gravity from the project settings to be synced with RigidDynamicBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 var GamePaused = false;
-var MaxHealth = 100;
-var Health = 100;
-var MaxStamina = 100;
-var Stamina = 100;
 
 #Weapon configuration
 var Weapon_Type = "NailGun";
@@ -50,11 +40,6 @@ func ResetAmmoText():
 		AmmoLabel.text = str(LoadedAmmo) + "/999+";
 	else:
 		AmmoLabel.text = str(LoadedAmmo) + "/" + str(TotalAmmo);
-		
-func ResetHealthBar():
-	HealthBar.rect_size = Vector2(35 * (Health/MaxHealth),15);
-func ResetStaminaBar():
-	StaminaBar.rect_size = Vector2(136 * (Stamina/MaxStamina),24);
 		
 func WeaponFramework():
 	if Input.is_action_pressed("left_click") and $WeaponCooldown.is_stopped():
@@ -87,7 +72,7 @@ func WeaponFramework():
 			
 			if "Enemy_" in RayTarget_Name:
 				RayTarget.Health -= Weapon_Damage;
-				RayTarget.Shot()
+				RayTarget.shot()
 				
 				if RayTarget.Health < 0:
 					RayTarget.queue_free()
@@ -110,8 +95,6 @@ func _input(event):
 		camera.setpos(event)
 		
 	if event is InputEventKey:
-			
-		
 		if Input.is_action_just_pressed("esc"):
 			
 			GamePaused = !GamePaused;
@@ -135,17 +118,6 @@ func _input(event):
 			ResetAmmoText();
 
 func _physics_process(delta):
-	if Input.is_action_pressed("run") and !Stamina <= 0:
-			SPEED = 3*NormalSpeed
-			Stamina -= RunStaminaCost*delta
-	elif !Input.is_action_pressed("run"):
-		SPEED = NormalSpeed
-		if Stamina < MaxStamina:
-			Stamina += 5*delta
-	else: 
-		SPEED = NormalSpeed
-	ResetStaminaBar()	
-	
 	if ExitGameButton.button_pressed:
 		get_tree().quit()
 	

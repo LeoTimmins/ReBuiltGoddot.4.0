@@ -1,5 +1,7 @@
 extends CharacterBody3D
 
+var HB_Scale = 5
+
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
@@ -10,6 +12,11 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 const MaxHealth = 100;
 var Health = 100.00;
 
+func Shot():
+	HealthBar.scale = Vector3(HB_Scale*8*(Health/MaxHealth),HB_Scale*1,HB_Scale*1)
+
+func _ready():
+	HealthBar.scale = Vector3(HB_Scale*8*(Health/MaxHealth),HB_Scale*1,HB_Scale*1)
 
 func _physics_process(delta):
 		
