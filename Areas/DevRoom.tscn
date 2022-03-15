@@ -1429,6 +1429,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 16)
 [node name="Factory-Floor-53" parent="LD/Roof" instance=ExtResource( "1_6tger" )]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 6)
 
+<<<<<<< HEAD
 [node name="Factory-Floor-54" parent="LD/Roof" instance=ExtResource( "1_6tger" )]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 8)
 
@@ -1458,6 +1459,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 12)
 
 [node name="Factory-Floor-73" parent="LD/Roof" instance=ExtResource( "1_6tger" )]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 14)
+=======
+[node name="RecourceContainers" type="Node3D" parent="LD"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.564656, 0)
+>>>>>>> parent of 6bc48c8 (LD Update- DevRoom.tscn)
 
 [node name="Factory-Floor-74" parent="LD/Roof" instance=ExtResource( "1_6tger" )]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 16)
@@ -2227,6 +2232,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -12)
 [node name="Factory-Floor-66" parent="LD/Roof" instance=ExtResource( "1_6tger" )]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -10)
 
+<<<<<<< HEAD
 [node name="Factory-Floor-67" parent="LD/Roof" instance=ExtResource( "1_6tger" )]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -8)
 
@@ -2316,6 +2322,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, -12)
 
 [node name="Factory-Floor-242" parent="LD/Roof" instance=ExtResource( "1_6tger" )]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, -10)
+=======
+[node name="Lights" type="Node3D" parent="LD"]
+>>>>>>> parent of 6bc48c8 (LD Update- DevRoom.tscn)
 
 [node name="Factory-Floor-243" parent="LD/Roof" instance=ExtResource( "1_6tger" )]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, -8)
@@ -2347,8 +2356,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -10)
 [node name="Factory-Floor-291" parent="LD/Roof" instance=ExtResource( "1_6tger" )]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -8)
 
+<<<<<<< HEAD
 [node name="Factory-Floor-305" parent="LD/Roof" instance=ExtResource( "1_6tger" )]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -12)
+=======
+[node name="ChainLight11" parent="LD/Lights" instance=ExtResource( "12_ebnu8" )]
+transform = Transform3D(0.33764, 0, 0, 0, 0.33764, 0, 0, 0, 0.33764, 6.56405, 1.41043, -6.34667)
+
+[node name="ChainLight12" parent="LD/Lights" instance=ExtResource( "12_ebnu8" )]
+transform = Transform3D(0.33764, 0, 0, 0, 0.33764, 0, 0, 0, 0.33764, 2.61914, 1.41043, -6.34667)
+>>>>>>> parent of 6bc48c8 (LD Update- DevRoom.tscn)
 
 [node name="Factory-Floor-306" parent="LD/Roof" instance=ExtResource( "1_6tger" )]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -10)
