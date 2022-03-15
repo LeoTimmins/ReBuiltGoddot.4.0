@@ -1,11 +1,10 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=5 format=3 uid="uid://dfn4lmtqhjh7n"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/RecourceContainers_/RecourceContainer_Copper.gd" id="1_nph1o"]
 
-
 [sub_resource type="SphereMesh" id="SphereMesh_8t1vg"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lhueh"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5654n"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_kdfnx"]
 
@@ -14,7 +13,7 @@ script = ExtResource( "1_nph1o" )
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource( "SphereMesh_8t1vg" )
-surface_material_override/0 = SubResource( "StandardMaterial3D_lhueh" )
+surface_material_override/0 = SubResource( "StandardMaterial3D_5654n" )
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource( "SphereShape3D_kdfnx" )
