@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cr11cf5o6l0ba"]
+[gd_scene load_steps=5 format=3 uid="uid://btsqkt22602rk"]
 
-[ext_resource type="Script" path="res://Scripts/Enemy_Turret.gd" id="1_tchw7"]
-[ext_resource type="PackedScene" uid="uid://cny6ttm6dq0cn" path="res://Models/Turret/Turret.glb" id="3_uenc0"]
+[ext_resource type="Script" path="res://Assets/Scripts/Enemy_Turret.gd" id="1_tchw7"]
+[ext_resource type="PackedScene" uid="uid://cny6ttm6dq0cn" path="res://Assets/Models/Turret/Turret.glb" id="3_uenc0"]
 [ext_resource type="Texture2D" uid="uid://cgi6op15wsu87" path="res://Assets/Images/GreenSqr.png" id="4_peiu6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4jqjq"]

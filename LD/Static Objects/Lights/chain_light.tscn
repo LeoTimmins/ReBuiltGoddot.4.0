@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://j71sv2ad44rl"]
+
+[ext_resource type="PackedScene" uid="uid://dorba2fxa27we" path="res://Assets/Models/Lights/ChainLight/ChainLight.glb" id="1_5y2f3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_herhc"]
+
+[node name="ChainLight" type="StaticBody3D"]
+
+[node name="ChainLight" parent="." instance=ExtResource( "1_5y2f3" )]
+transform = Transform3D(0.0655604, 0, 0, 0, 0.0655604, 0, 0, 0, 0.0655604, -0.00488207, -0.370783, -0.00408399)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.13248, 0, 0, 0, 1.13248, 0, 0, 0, 1.13248, 0, 0, 0)
+shape = SubResource( "BoxShape3D_herhc" )
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+shadow_enabled = true
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_energy = 0.48

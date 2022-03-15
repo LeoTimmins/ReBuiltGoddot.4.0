@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://cd83gukneb1rq"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/RecourceContainers_/RecourceContainer_Rubber.gd" id="1_e18b3"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_8t1vg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8sf73"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_kdfnx"]
+
+[node name="RecourceContainer_Rubber" type="StaticBody3D"]
+script = ExtResource( "1_e18b3" )
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource( "SphereMesh_8t1vg" )
+surface_material_override/0 = SubResource( "ShaderMaterial_8sf73" )
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource( "SphereShape3D_kdfnx" )

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://batvtjr0b1hsd"]
+
+[ext_resource type="PackedScene" uid="uid://4uf24eh3xdv2" path="res://Assets/Models/Wall/Factory-wall_1/FactoryFloor-1.glb" id="1_xxuqg"]
+
+[node name="Factory-Wall-1" type="StaticBody3D"]
+
+[node name="FactoryFloor-2" parent="." instance=ExtResource( "1_xxuqg" )]
+transform = Transform3D(1, 0, 0, 0, 1.3, 0, 0, 0, 1.6, -0.00487924, 0.0198567, -0.00344872)
